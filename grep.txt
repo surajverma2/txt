@@ -1,0 +1,14 @@
+Two forms of regular expression syntax are used with the GNU grep program found on most Linux systems: basic and extended. With GNU grep, there is no difference in functionality. Basic syntax is described here, along with the differences between it and extended syntax.
+
+Regular expressions are built from characters and operators, augmented by metacharacters. Most characters match themselves, and most metacharacters must be escaped using a backslash (). The fundamental operations are:
+
+Concatenation
+Concatenating two regular expressions creates a longer expression. For example, the regular expression a will match the string abcdcba twice (the first and last a) and so will the regular expression b. However, ab will match only abcdcba, while ba will match only abcdcba.
+
+Repetition
+The Kleene or repetition operator will match zero or more occurrences of the preceding regular expression. Thus, an expression like **ab will match any string of as terminated by a b, including just b itself (that is a string of 0 as followed by b*). The Kleene does not have to be escaped, so an expression in which you want to match a literal asterisk () must have the asterisk escaped. The use of here is different from the use in globbing, where it matches any string.
+
+Alternation
+The altern ation operator (|) matches either the preceding or following expression. It must be escaped in basic syntax. For example, the expression a|bc will match a string consisting of any number of as or a string of any number of bs ( but not both) termin ated by a single c. Again, the single character c matches.
+
+You often need to quote your regular expressions to avoid shell expansion.
